@@ -9,6 +9,8 @@ const morgan = require('morgan');
 // req 바디 파서 추가
 const bodyParser = require('body-parser');
 
+// 
+
 
 // mongoose 추가
 const mongoose = require('mongoose');
@@ -33,6 +35,7 @@ mongoose.Promise = global.Promise;
 
 
 app.use(morgan('dev'));
+app.use('/uploads', express.static('uploads'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false}));
 
