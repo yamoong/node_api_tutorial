@@ -18,6 +18,7 @@ const mongoose = require('mongoose');
 // router 모듈 추가
 const productRoutes = require('./api/routes/products');
 const orderRoutes = require('./api/routes/orders');
+const userRoutes = require("./api/routes/user");
 
 const db = require('./config/key').mongoURI;
 // routes로 처리하므로 root는 주석처리
@@ -33,6 +34,7 @@ mongoose.connect(db, { useNewUrlParser: true})
 
 mongoose.Promise = global.Promise;
 
+mongoose.set('useCreateIndex', true);
 
 app.use(morgan('dev'));
 app.use('/uploads', express.static('uploads'));
@@ -54,6 +56,7 @@ app.use((req, res, next) => {
 
 app.use('/products', productRoutes);
 app.use('/orders', orderRoutes);
+app.use('/user', userRoutes);
 
 app.use((req, res, next) => {
     const error = new Error('Not found');

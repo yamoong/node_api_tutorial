@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
+const checkAuth = require("../middleware/chack-auth");
 
 // 파일 업로드 패키지
 const multer = require('multer');
